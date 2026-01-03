@@ -211,7 +211,7 @@
     <div class="container">
         <div class="header">
             <h1><span class="bigletter">H</span>ollis's Unbirthday Puzzle Hunt</h1>
-            <img src="alicehole.jpg" width="300" alt="Alice looking through a door">
+            <img src="alicedoor.jpg" width="300" alt="Alice looking through a door">
             <div class="subtitle">Enter the rabbit hole and submit your answers:</div>
         </div>
         
@@ -229,11 +229,10 @@
         // 4. From the URL, copy the form action URL and entry IDs below
         
         const GOOGLE_FORM_CONFIG = {
-            formActionUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf4WP-LhhaP4yScZT3uwdUwtIG792RRJODu0s_uUGKSlD9hyg/viewform?usp=header", // e.g., "https://docs.google.com/forms/d/e/1FAIpQLSc.../formResponse"
-            puzzleNumberField: "entry.123456",    // Replace with your entry ID
-            puzzleTitleField: "entry.234567",     // Replace with your entry ID
-            teamNameField: "entry.345678",        // Replace with your entry ID
-            answerField: "entry.456789"           // Replace with your entry ID
+            formActionUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf4WP-LhhaP4yScZT3uwdUwtIG792RRJODu0s_uUGKSlD9hyg/formResponse",
+            puzzleNumberField: "entry.1545261752",
+            teamNameField: "entry.450510367",
+            answerField: "entry.1751728324"
         };
 
         // ==========================================
@@ -276,16 +275,9 @@
             return answer.toLowerCase().trim().replace(/[^\w\s]/g, '');
         }
 
-        function submitToGoogleForm(puzzleId, puzzleTitle, teamName, answer) {
-            // Only submit if form is configured
-            if (GOOGLE_FORM_CONFIG.formActionUrl === "YOUR_FORM_URL_HERE") {
-                console.log("Google Form not configured - skipping submission");
-                return;
-            }
-
+        function submitToGoogleForm(puzzleId, teamName, answer) {
             const formData = new FormData();
             formData.append(GOOGLE_FORM_CONFIG.puzzleNumberField, puzzleId);
-            formData.append(GOOGLE_FORM_CONFIG.puzzleTitleField, puzzleTitle);
             formData.append(GOOGLE_FORM_CONFIG.teamNameField, teamName);
             formData.append(GOOGLE_FORM_CONFIG.answerField, answer);
 
@@ -315,7 +307,7 @@
             const normalizedAnswer = normalizeAnswer(answer);
             
             // Submit to Google Form
-            submitToGoogleForm(puzzle.id, puzzle.title, teamName, answer);
+            submitToGoogleForm(puzzle.id, teamName, answer);
             
             // Check correct answers
             if (puzzle.correctAnswers.some(a => normalizeAnswer(a) === normalizedAnswer)) {
