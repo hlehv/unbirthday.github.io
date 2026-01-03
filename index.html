@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wonderland Puzzle Hunt</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Indie+Flower&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&family=Kings&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -14,8 +14,7 @@
         }
         
         body {
-            font-family: 'Architects Daughter', cursive;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Newsreader', serif;
             min-height: 100vh;
             padding: 20px;
             position: relative;
@@ -29,9 +28,6 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 0%, transparent 50%);
             pointer-events: none;
         }
         
@@ -43,9 +39,10 @@
         }
         
         .header {
+            font-family: 'Cormorant Unicase', serif;
             text-align: center;
+            color: black;
             margin-bottom: 40px;
-            animation: float 3s ease-in-out infinite;
         }
         
         @keyframes float {
@@ -55,18 +52,22 @@
         
         h1 {
             font-size: 3.5em;
-            color: #fff;
-            text-shadow: 4px 4px 0px rgba(0,0,0,0.2),
-                         6px 6px 0px rgba(0,0,0,0.1);
+            color: black;
             margin-bottom: 10px;
             letter-spacing: 2px;
         }
+
+        .bigletter {
+            font-size: 2.2em;
+            font-family: "Kings", cursive;
+            font-weight: 400;
+        }
         
         .subtitle {
-            font-family: 'Indie Flower', cursive;
+            font-family: 'Newsreader', serif;
             font-size: 1.3em;
-            color: #ffd700;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            color: black;
+            font-style: italic;
         }
         
         .puzzle-card {
@@ -74,14 +75,8 @@
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
-            border: 3px solid #333;
-            transform: rotate(-1deg);
+            border: 2px solid #333;
             transition: transform 0.3s ease;
-        }
-        
-        .puzzle-card:nth-child(even) {
-            transform: rotate(1deg);
         }
         
         .puzzle-card:hover {
@@ -93,7 +88,7 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 3px dashed #667eea;
+            border-bottom: 1px solid black;
         }
         
         .puzzle-number {
@@ -124,15 +119,15 @@
             font-size: 1.1em;
             color: #333;
             margin-bottom: 8px;
-            font-weight: bold;
+            font-weight: light;
+            font-family: Arial;
         }
         
         input[type="text"] {
             width: 100%;
             padding: 12px 15px;
-            font-family: 'Architects Daughter', cursive;
             font-size: 1.1em;
-            border: 3px solid #333;
+            border: 1px solid #333;
             border-radius: 10px;
             background: #fffef7;
             transition: all 0.3s ease;
@@ -145,15 +140,13 @@
         }
         
         button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #7f8dca;
             color: white;
-            border: 3px solid #333;
+            border: 2px solid #333;
             padding: 15px 40px;
-            font-family: 'Architects Daughter', cursive;
             font-size: 1.2em;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
             margin-top: 10px;
         }
@@ -217,15 +210,35 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎩 Wonderland Puzzle Hunt 🐰</h1>
-            <p class="subtitle">Down the rabbit hole we go...</p>
+            <h1><span class="bigletter">H</span>ollis's Unbirthday Puzzle Hunt</h1>
+            <img src="alicehole.jpg" width="300" alt="Alice looking through a door">
+            <div class="subtitle">Enter the rabbit hole and submit your answers:</div>
         </div>
         
         <div id="puzzles-container"></div>
     </div>
 
     <script>
+        // ==========================================
+        // GOOGLE FORM CONFIGURATION
+        // ==========================================
+        // INSTRUCTIONS:
+        // 1. Create a Google Form with fields: Puzzle Number, Puzzle Title, Team Name, Answer
+        // 2. Click the three dots → "Get pre-filled link"
+        // 3. Fill in dummy data and click "Get link"
+        // 4. From the URL, copy the form action URL and entry IDs below
+        
+        const GOOGLE_FORM_CONFIG = {
+            formActionUrl: "YOUR_FORM_URL_HERE", // e.g., "https://docs.google.com/forms/d/e/1FAIpQLSc.../formResponse"
+            puzzleNumberField: "entry.123456",    // Replace with your entry ID
+            puzzleTitleField: "entry.234567",     // Replace with your entry ID
+            teamNameField: "entry.345678",        // Replace with your entry ID
+            answerField: "entry.456789"           // Replace with your entry ID
+        };
+
+        // ==========================================
         // CONFIGURE YOUR PUZZLES HERE
+        // ==========================================
         const puzzles = [
             {
                 id: 1,
@@ -263,6 +276,29 @@
             return answer.toLowerCase().trim().replace(/[^\w\s]/g, '');
         }
 
+        function submitToGoogleForm(puzzleId, puzzleTitle, teamName, answer) {
+            // Only submit if form is configured
+            if (GOOGLE_FORM_CONFIG.formActionUrl === "YOUR_FORM_URL_HERE") {
+                console.log("Google Form not configured - skipping submission");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append(GOOGLE_FORM_CONFIG.puzzleNumberField, puzzleId);
+            formData.append(GOOGLE_FORM_CONFIG.puzzleTitleField, puzzleTitle);
+            formData.append(GOOGLE_FORM_CONFIG.teamNameField, teamName);
+            formData.append(GOOGLE_FORM_CONFIG.answerField, answer);
+
+            // Submit to Google Form (using no-cors to avoid CORS issues)
+            fetch(GOOGLE_FORM_CONFIG.formActionUrl, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            }).catch(err => {
+                console.log("Form submission attempted (errors expected with no-cors mode)");
+            });
+        }
+
         function checkAnswer(puzzleId) {
             const puzzle = puzzles.find(p => p.id === puzzleId);
             const teamName = document.getElementById(`team-${puzzleId}`).value.trim();
@@ -277,6 +313,9 @@
             }
             
             const normalizedAnswer = normalizeAnswer(answer);
+            
+            // Submit to Google Form
+            submitToGoogleForm(puzzle.id, puzzle.title, teamName, answer);
             
             // Check correct answers
             if (puzzle.correctAnswers.some(a => normalizeAnswer(a) === normalizedAnswer)) {
@@ -308,7 +347,6 @@
                         <div class="puzzle-number">${puzzle.id}</div>
                         <div class="puzzle-title">${puzzle.title}</div>
                     </div>
-                    <div class="puzzle-description">${puzzle.description}</div>
                     <div class="input-group">
                         <label for="team-${puzzle.id}">Team Name:</label>
                         <input type="text" id="team-${puzzle.id}" placeholder="Enter your team name">
