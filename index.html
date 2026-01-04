@@ -211,7 +211,7 @@
     <div class="container">
         <div class="header">
             <h1><span class="bigletter">H</span>ollis's Unbirthday Puzzle Hunt</h1>
-            <img src="alicedoor.jpg" width="300" alt="Alice looking through a door">
+            <img src="alicehole.jpg" width="300" alt="Alice looking through a door">
             <div class="subtitle">Enter the rabbit hole and submit your answers:</div>
         </div>
         
@@ -241,33 +241,66 @@
         const puzzles = [
             {
                 id: 1,
-                title: "The Mad Hatter's Tea Party",
-                description: "The Mad Hatter asks: 'Why is a raven like a writing desk?' What's the answer to this riddle?",
-                correctAnswers: ["poe wrote on both", "both have notes"],
-                partialAnswers: ["edgar", "poe", "notes", "desk", "raven"],
-                correctPrompt: "🎉 Splendid! The Cheshire Cat appears and says: 'We're all mad here. Follow the white rabbit to the Queen's garden!'",
-                partialPrompt: "🤔 You're getting warmer! Think about Edgar Allan Poe...",
-                incorrectPrompt: "❌ That's not quite right. Have some tea and try again!"
+                title: "Alice in Wordleland",
+                correctAnswers: ["angora"],
+                partialAnswers: ["which bunny breed makes fiber"],
+                correctPrompt: "Great job! You figured out which white rabbit to follow. ",
+                partialPrompt: "Keep going, feel free to put that phrase in google.",
+                incorrectPrompt: "That's not quite right. Have some tea and try again!"
             },
             {
                 id: 2,
-                title: "The Queen's Croquet Game",
-                description: "The Queen shouts 'Off with their heads!' How many cards are in a standard deck?",
-                correctAnswers: ["52", "fifty two", "fifty-two"],
-                partialAnswers: ["50", "54", "51", "53"],
-                correctPrompt: "👑 Excellent! You've survived the Queen's wrath! She grants you passage to the garden.",
-                partialPrompt: "🌹 Close! Count the hearts, diamonds, clubs, and spades carefully...",
-                incorrectPrompt: "💔 Wrong! The Queen is not pleased. Try counting again!"
+                title: "The Hedge Maze",
+                correctAnswers: ["croquet"],
+                partialAnswers: ["What game does the queen play?", "What game does the queen play"],
+                correctPrompt: "Excellent! You've survived the Queen's wrath! She grants you passage to the garden.",
+                partialPrompt: "Keep going. What game does the queen of hearts play in Alice in Wonderland?",
+                incorrectPrompt: "Wrong! The Queen is not pleased. Try again!"
             },
             {
                 id: 3,
-                title: "The Caterpillar's Question",
-                description: "The Caterpillar sits on a mushroom smoking a hookah and asks: 'Who are YOU?' What do you think Alice would answer?",
-                correctAnswers: ["alice", "i am alice", "im alice"],
-                partialAnswers: ["a girl", "girl", "child", "person"],
-                correctPrompt: "🦋 Perfectly right! The Caterpillar nods wisely and offers you a piece of mushroom.",
-                partialPrompt: "🍄 You're on the right track, but be more specific...",
-                incorrectPrompt: "🐛 Not quite. Think about who our protagonist is!"
+                title: "The Portmanteau",
+                correctAnswers: ["frabjous"],
+                partialAnswers: ["froyo", "spork", "gerrymander","brexit","jeggings", "velcro", "tofurkey", "popsicle"],
+                correctPrompt: "Correct! Alice is able to open the portmanteau, and inside finds ",
+                partialPrompt: "That is one of the words in the puzzle. Keep going.",
+                incorrectPrompt: "Not quite. The briefcase remains locked."
+            },
+            {
+                id: 4,
+                title: "The Caterpillar",
+                correctAnswers: ["I am a cutie pie", "I M A Q T pi", "IMAQTpi", "I am a qt pi", "I m a qtpi", "ima qtpi", "im a qtpi", "im a qt pi",],
+                partialAnswers: [],
+                correctPrompt: "'Y yes,' says the Caterpillar. Please proceed ",
+                partialPrompt: "Keep going.",
+                incorrectPrompt: "'Not at all,' says the Caterpillar."
+            },
+            {
+                id: 5,
+                title: "Slot Machine",
+                correctAnswers: ["score"],
+                partialAnswers: ["Answer is"],
+                correctPrompt: "Correct! Alice is able to open the portmanteau, and inside finds ",
+                partialPrompt: "You've decoded the numbers correctly, keep going.",
+                incorrectPrompt: "That's not getting you any closer to a jackpot."
+            },
+            {
+                id: 6,
+                title: "Tea Party",
+                correctAnswers: ["Alice Liddell", "Alice Lidell", "Alice Pleasance Liddell", "Liddell", "Lidell", "Lidel", "Liddel", "Alice Liddel", "Alice Pleasance Lidel", "Alice Pleasance Liddel"],
+                partialAnswers: ["MAIN LASS NAME MUSE"],
+                correctPrompt: "Correct! That must be a lovely tea party. ",
+                partialPrompt: "Who was the muse for the main lass in this story? Keep going.",
+                incorrectPrompt: "Not quite."
+            },
+            {
+                id: 7,
+                title: "Which Way?",
+                correctAnswers: ["catenary"],
+                partialAnswers: ["FOURTH LETTER OF EACH WORD"],
+                correctPrompt: "Correct! The cheshire cat appears from within the trees and smiles. Please send a picture of a maneki-neko (you can google what it is). ",
+                partialPrompt: "Keep going. Look at the whole puzzle, not just the image.",
+                incorrectPrompt: "You remain lost."
             }
         ];
 
