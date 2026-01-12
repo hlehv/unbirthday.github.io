@@ -75,13 +75,9 @@
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
-            border: 2px solid #333;
-            transition: transform 0.3s ease;
+            border: 1px solid #333;
         }
         
-        .puzzle-card:hover {
-            transform: rotate(0deg) scale(1.02);
-        }
         
         .puzzle-header {
             display: flex;
@@ -126,7 +122,7 @@
         input[type="text"] {
             width: 100%;
             padding: 12px 15px;
-            font-size: 1.1em;
+            font-size: 1em;
             border: 1px solid #333;
             border-radius: 10px;
             background: #fffef7;
@@ -142,7 +138,7 @@
         button {
             background: #7f8dca;
             color: white;
-            border: 2px solid #333;
+            border: 1px solid #333;
             padding: 15px 40px;
             font-size: 1.2em;
             border-radius: 50px;
@@ -166,9 +162,9 @@
             padding: 20px;
             border-radius: 15px;
             font-size: 1.2em;
-            border: 3px solid #333;
+            border: 1px solid #333;
             display: none;
-            animation: slideIn 0.5s ease;
+
         }
         
         @keyframes slideIn {
@@ -319,7 +315,9 @@
         <div class="header">
             <h1><span class="bigletter">H</span>ollis's Unbirthday Puzzle Hunt</h1>
             <img src="alicehole.jpg" width="300" alt="Alice looking through a door">
-            <div class="subtitle">Enter the rabbit hole and submit your answers:</div>
+            <div class="subtitle">On her way to celebrate her Unbirthday, Alice falls down a rabbit hole and ends up in a dreamlike version of Sawtelle, where reality and nonsense blur together.
+                
+                <br><br>You must solve puzzles and take pictures of the real Sawtelle, to help her get back to her party.</div>
         </div>
         
         <div id="puzzles-container"></div>
@@ -346,7 +344,7 @@
                 title: "Alice in Wordleland",
                 correctAnswers: ["angora"],
                 partialAnswers: ["which bunny breed makes fiber"],
-                correctPrompt: "Great job! You figured out which white rabbit to follow. ",
+                correctPrompt: "Thanks for getting Alice out of Wordleland! She thinks she saw a round window on the rabbit's house, perhaps if she had a photo of a circular window it would help her find her way back. <b>Take a picture of a circular window and send it in discord.</b> ",
                 partialPrompt: "Keep going, feel free to put that phrase in google.",
                 incorrectPrompt: "That's not quite right. Have some tea and try again!"
             },
@@ -355,7 +353,7 @@
                 title: "The Hedge Maze",
                 correctAnswers: ["croquet"],
                 partialAnswers: ["What game does the queen play?", "What game does the queen play"],
-                correctPrompt: "Excellent! You've survived the Queen's wrath! She grants you passage to the garden.",
+                correctPrompt: "You were able to help Alice escape from the Queen’s hedge maze. Many Japanese Americans settled in Sawtelle due to exclusionary housing and land-use policies in other parts of LA. While the Queen would love to paint over unsavory history, you must acknowledge it to help Alice proceed. <b>Find a Japanese American history reference and take a photo of it to show the Queen.</b> ",
                 partialPrompt: "Keep going. What game does the queen of hearts play in Alice in Wonderland?",
                 incorrectPrompt: "Wrong! The Queen is not pleased. Try again!"
             },
@@ -364,7 +362,7 @@
                 title: "The Portmanteau",
                 correctAnswers: ["frabjous"],
                 partialAnswers: ["froyo", "spork", "gerrymander","brexit","jeggings", "velcro", "tofurkey", "popsicle"],
-                correctPrompt: "Correct! Alice is able to open the portmanteau, and inside finds ",
+                correctPrompt: "Correct, Alice is able to open the Portmanteau and finds a blue hat. Angelenos hate smog and love brunch… and something else. Oh yeah, the Dodgers! <b>Take a photo with a piece of dodgers merch.</b>",
                 partialPrompt: "That is one of the words in the puzzle. Keep going.",
                 incorrectPrompt: "Not quite. The briefcase remains locked."
             },
@@ -373,7 +371,7 @@
                 title: "The Caterpillar",
                 correctAnswers: ["I am a cutie pie", "I M A Q T pi", "IMAQTpi", "I am a qt pi", "I m a qtpi", "ima qtpi", "im a qtpi", "im a qt pi",],
                 partialAnswers: [],
-                correctPrompt: "'Y yes,' says the Caterpillar. Please proceed ",
+                correctPrompt: "<i>Y yes,</i> says the Caterpillar. You’ve told the Caterpillar who U R, now you must find another QTπ, Totoro! <b>Please find Totoro and take a photo of him so that Alice can help him get to the party. </b> ",
                 partialPrompt: "Keep going.",
                 incorrectPrompt: "'Not at all,' says the Caterpillar."
             },
@@ -382,7 +380,7 @@
                 title: "Slot Machine",
                 correctAnswers: ["score"],
                 partialAnswers: ["Answer is"],
-                correctPrompt: "Correct! Alice is able to open the portmanteau, and inside finds ",
+                correctPrompt: "Alice won big at her slot machine, please <b>find a Gachapon machine and take a photo of the prize won</b> (you don’t have to play yourself, you can take a photo of someone else’s prize.)",
                 partialPrompt: "You've decoded the numbers correctly, keep going.",
                 incorrectPrompt: "That's not getting you any closer to a jackpot."
             },
@@ -391,7 +389,7 @@
                 title: "Tea Party",
                 correctAnswers: ["Alice Liddell", "Alice Lidell", "Alice Pleasance Liddell", "Liddell", "Lidell", "Lidel", "Liddel", "Alice Liddel", "Alice Pleasance Lidel", "Alice Pleasance Liddel"],
                 partialAnswers: ["MAIN LASS NAME MUSE"],
-                correctPrompt: "Correct! That must be a lovely tea party. ",
+                correctPrompt: "Correct! Along with the abandoned tea party, it looks like folks in Sawtelle have left up some overdue holiday decor. <b> Please send a photo of winter holiday decoration (christmas lights, etc.) to guide Alice’s way. </b>",
                 partialPrompt: "Who was the muse for the main lass in this story? Keep going.",
                 incorrectPrompt: "Not quite."
             },
@@ -400,7 +398,7 @@
                 title: "Which Way?",
                 correctAnswers: ["catenary"],
                 partialAnswers: ["FOURTH LETTER OF EACH WORD"],
-                correctPrompt: "Correct! The cheshire cat appears from within the trees and smiles. Please send a picture of a maneki-neko (you can google what it is). ",
+                correctPrompt: "Correct! The Cheshire Cat appears and smiles at you. <i>Would you please find me a Maneki Neko to hang out with me?</i> he says. Please find a take a photo of a Maneki Neko. ",
                 partialPrompt: "Keep going. Look at the whole puzzle, not just the image.",
                 incorrectPrompt: "You remain lost."
             }
@@ -434,7 +432,7 @@
             
             if (!teamName) {
                 feedbackDiv.className = 'feedback incorrect';
-                feedbackDiv.innerHTML = '⚠️ Please enter your team name!';
+                feedbackDiv.innerHTML = 'Please enter your team name!';
                 feedbackDiv.style.display = 'block';
                 return;
             }
@@ -479,8 +477,8 @@
                         <input type="text" id="team-${puzzle.id}" placeholder="Enter your team name">
                     </div>
                     <div class="input-group">
-                        <label for="answer-${puzzle.id}">Your Answer:</label>
-                        <input type="text" id="answer-${puzzle.id}" placeholder="Type your answer here" 
+                        <label for="answer-${puzzle.id}">Answer:</label>
+                        <input type="text" id="answer-${puzzle.id}" placeholder="Enter your answer" 
                                onkeypress="if(event.key === 'Enter') checkAnswer(${puzzle.id})">
                     </div>
                     <button onclick="checkAnswer(${puzzle.id})">Submit Answer</button>
