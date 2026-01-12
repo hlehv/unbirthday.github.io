@@ -310,190 +310,20 @@
             <span></span>
         </div>
         <div class="menu-dropdown" id="menuDropdown">
-            <a href="puzzles.html">Puzzle PDFs</a>
+            <a href="index.html">Main</a>
             <a href="rules.html">Rules</a>
         </div>
     </div>
-
     <div class="container">
         <div class="header">
             <h1><span class="bigletter">H</span>ollis's Unbirthday Puzzle Hunt</h1>
-            <img src="alicehole.jpg" width="300" alt="Alice looking through a door">
-            <div class="subtitle">Enter the rabbit hole and submit your answers:</div>
+            <img src="alicedoor.jpg" width="300" alt="Alice looking through a door">
+            <div class="subtitle">Puzzle PDFs will be uploaded here.</div>
         </div>
-        
-        <div id="puzzles-container"></div>
     </div>
-
-    <script>
-        // ==========================================
-        // GOOGLE FORM CONFIGURATION
-        // ==========================================
-        
-        const GOOGLE_FORM_CONFIG = {
-            formActionUrl: "https://docs.google.com/forms/d/e/1FAIpQLSf4WP-LhhaP4yScZT3uwdUwtIG792RRJODu0s_uUGKSlD9hyg/formResponse",
-            puzzleNumberField: "entry.1545261752",
-            teamNameField: "entry.450510367",
-            answerField: "entry.1751728324"
-        };
-
-        // ==========================================
-        // CONFIGURE YOUR PUZZLES HERE
-        // ==========================================
-        const puzzles = [
-            {
-                id: 1,
-                title: "Alice in Wordleland",
-                correctAnswers: ["angora"],
-                partialAnswers: ["which bunny breed makes fiber"],
-                correctPrompt: "Great job! You figured out which white rabbit to follow. ",
-                partialPrompt: "Keep going, feel free to put that phrase in google.",
-                incorrectPrompt: "That's not quite right. Have some tea and try again!"
-            },
-            {
-                id: 2,
-                title: "The Hedge Maze",
-                correctAnswers: ["croquet"],
-                partialAnswers: ["What game does the queen play?", "What game does the queen play"],
-                correctPrompt: "Excellent! You've survived the Queen's wrath! She grants you passage to the garden.",
-                partialPrompt: "Keep going. What game does the queen of hearts play in Alice in Wonderland?",
-                incorrectPrompt: "Wrong! The Queen is not pleased. Try again!"
-            },
-            {
-                id: 3,
-                title: "The Portmanteau",
-                correctAnswers: ["frabjous"],
-                partialAnswers: ["froyo", "spork", "gerrymander","brexit","jeggings", "velcro", "tofurkey", "popsicle"],
-                correctPrompt: "Correct! Alice is able to open the portmanteau, and inside finds ",
-                partialPrompt: "That is one of the words in the puzzle. Keep going.",
-                incorrectPrompt: "Not quite. The briefcase remains locked."
-            },
-            {
-                id: 4,
-                title: "The Caterpillar",
-                correctAnswers: ["I am a cutie pie", "I M A Q T pi", "IMAQTpi", "I am a qt pi", "I m a qtpi", "ima qtpi", "im a qtpi", "im a qt pi",],
-                partialAnswers: [],
-                correctPrompt: "'Y yes,' says the Caterpillar. Please proceed ",
-                partialPrompt: "Keep going.",
-                incorrectPrompt: "'Not at all,' says the Caterpillar."
-            },
-            {
-                id: 5,
-                title: "Slot Machine",
-                correctAnswers: ["score"],
-                partialAnswers: ["Answer is"],
-                correctPrompt: "Correct! Alice is able to open the portmanteau, and inside finds ",
-                partialPrompt: "You've decoded the numbers correctly, keep going.",
-                incorrectPrompt: "That's not getting you any closer to a jackpot."
-            },
-            {
-                id: 6,
-                title: "Tea Party",
-                correctAnswers: ["Alice Liddell", "Alice Lidell", "Alice Pleasance Liddell", "Liddell", "Lidell", "Lidel", "Liddel", "Alice Liddel", "Alice Pleasance Lidel", "Alice Pleasance Liddel"],
-                partialAnswers: ["MAIN LASS NAME MUSE"],
-                correctPrompt: "Correct! That must be a lovely tea party. ",
-                partialPrompt: "Who was the muse for the main lass in this story? Keep going.",
-                incorrectPrompt: "Not quite."
-            },
-            {
-                id: 7,
-                title: "Which Way?",
-                correctAnswers: ["catenary"],
-                partialAnswers: ["FOURTH LETTER OF EACH WORD"],
-                correctPrompt: "Correct! The cheshire cat appears from within the trees and smiles. Please send a picture of a maneki-neko (you can google what it is). ",
-                partialPrompt: "Keep going. Look at the whole puzzle, not just the image.",
-                incorrectPrompt: "You remain lost."
-            }
-        ];
-
-        function normalizeAnswer(answer) {
-            return answer.toLowerCase().trim().replace(/[^\w\s]/g, '');
-        }
-
-        function submitToGoogleForm(puzzleId, teamName, answer) {
-            const formData = new FormData();
-            formData.append(GOOGLE_FORM_CONFIG.puzzleNumberField, puzzleId);
-            formData.append(GOOGLE_FORM_CONFIG.teamNameField, teamName);
-            formData.append(GOOGLE_FORM_CONFIG.answerField, answer);
-
-            // Submit to Google Form (using no-cors to avoid CORS issues)
-            fetch(GOOGLE_FORM_CONFIG.formActionUrl, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors'
-            }).catch(err => {
-                console.log("Form submission attempted (errors expected with no-cors mode)");
-            });
-        }
-
-        function checkAnswer(puzzleId) {
-            const puzzle = puzzles.find(p => p.id === puzzleId);
-            const teamName = document.getElementById(`team-${puzzleId}`).value.trim();
-            const answer = document.getElementById(`answer-${puzzleId}`).value;
-            const feedbackDiv = document.getElementById(`feedback-${puzzleId}`);
-            
-            if (!teamName) {
-                feedbackDiv.className = 'feedback incorrect';
-                feedbackDiv.innerHTML = '⚠️ Please enter your team name!';
-                feedbackDiv.style.display = 'block';
-                return;
-            }
-            
-            const normalizedAnswer = normalizeAnswer(answer);
-            
-            // Submit to Google Form
-            submitToGoogleForm(puzzle.id, teamName, answer);
-            
-            // Check correct answers
-            if (puzzle.correctAnswers.some(a => normalizeAnswer(a) === normalizedAnswer)) {
-                feedbackDiv.className = 'feedback correct';
-                feedbackDiv.innerHTML = `<strong>Team ${teamName}:</strong> ${puzzle.correctPrompt}`;
-            }
-            // Check partial answers
-            else if (puzzle.partialAnswers.some(a => normalizedAnswer.includes(normalizeAnswer(a)))) {
-                feedbackDiv.className = 'feedback partial';
-                feedbackDiv.innerHTML = `<strong>Team ${teamName}:</strong> ${puzzle.partialPrompt}`;
-            }
-            // Incorrect
-            else {
-                feedbackDiv.className = 'feedback incorrect';
-                feedbackDiv.innerHTML = `<strong>Team ${teamName}:</strong> ${puzzle.incorrectPrompt}`;
-            }
-            
-            feedbackDiv.style.display = 'block';
-        }
-
-        function renderPuzzles() {
-            const container = document.getElementById('puzzles-container');
-            
-            puzzles.forEach(puzzle => {
-                const puzzleCard = document.createElement('div');
-                puzzleCard.className = 'puzzle-card';
-                puzzleCard.innerHTML = `
-                    <div class="puzzle-header">
-                        <div class="puzzle-number">${puzzle.id}</div>
-                        <div class="puzzle-title">${puzzle.title}</div>
-                    </div>
-                    <div class="input-group">
-                        <label for="team-${puzzle.id}">Team Name:</label>
-                        <input type="text" id="team-${puzzle.id}" placeholder="Enter your team name">
-                    </div>
-                    <div class="input-group">
-                        <label for="answer-${puzzle.id}">Your Answer:</label>
-                        <input type="text" id="answer-${puzzle.id}" placeholder="Type your answer here" 
-                               onkeypress="if(event.key === 'Enter') checkAnswer(${puzzle.id})">
-                    </div>
-                    <button onclick="checkAnswer(${puzzle.id})">Submit Answer</button>
-                    <div id="feedback-${puzzle.id}" class="feedback"></div>
-                `;
-                container.appendChild(puzzleCard);
-            });
-        }
-
-        renderPuzzles();
-
-        // Toggle menu function
-        function toggleMenu() {
+<script>
+            // Toggle menu function
+            function toggleMenu() {
             const icon = document.querySelector('.hamburger-icon');
             const dropdown = document.getElementById('menuDropdown');
             icon.classList.toggle('open');
@@ -508,6 +338,6 @@
                 document.getElementById('menuDropdown').classList.remove('open');
             }
         });
-    </script>
+</script>
 </body>
 </html>
